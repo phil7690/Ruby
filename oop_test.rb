@@ -1,21 +1,21 @@
 require 'open-uri'
 
-WORD-URL = "http://learncodethehardway.org/words.txt"
+WORD_URL = "http://learncodethehardway.org/words.txt"
 WORDS = []
 
 PHRASES = {
 "class ### < ###\nend" =>
 "Make a class named ### that is-a ###.",
 "class ###\n\t\def initialize(@@@)\n\tend\nend" =>
-"class ### has-a initializethat takes @@@ parameters.",
+"class ### has-a initialize that takes @@@ parameters.",
 "class ###\n\t\def ***(@@@)\n\tend\nend" =>
 "class ### has-a function named *** that takes @@@ parameters.",
 "*** = ###.new()" =>
-"Set *** to an instance of class ###.".
+"Set *** to an instance of class ###.",
 "***.***(@@@)" =>
 "From *** get the *** function, and call it with parameters @@@.",
 "***.*** = '***'" =>
-"From *** get the *** attribute adn set it to '***'."
+"From *** get the *** attribute and set it to '***'."
 }
 
 PHRASE_FIRST = ARGV[0] == "english"
@@ -72,7 +72,7 @@ loop do
   snippets = PHRASES.keys().sort_by {rand}
   for snippet in snippets
     phrase = PHRASES[snippet]
-    question, answer = converty(snippet, phrase)
+    question, answer = convert(snippet, phrase)
 
     if PHRASE_FIRST
       question, answer = answer, question
